@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Red Sans Clock</title>
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      margin: 0;
+    }
+    #clock {
+      font-family: 'Sans', Arial, Helvetica, sans-serif;
+      color: #ff2222;
+      font-size: 5rem;
+      letter-spacing: 0.1em;
+      text-shadow: 0 0 10px #ff2222a0;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock">--:--:--</div>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const pad = n => n.toString().padStart(2, '0');
+      const timeStr = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      document.getElementById('clock').textContent = timeStr;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
